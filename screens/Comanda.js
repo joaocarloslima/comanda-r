@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Button from "../components/button";
 import Input from "../components/input";
 
-export default function Comanda(){
+export default function Comanda({navigation}){
     return(
         <View style={styles.container}>
 
@@ -13,7 +13,7 @@ export default function Comanda(){
 
             <View>
                 <Input />
-                <Button>confirmar</Button>
+                <Button onPress={() => navigation.navigate("Produtos")}>confirmar</Button>
             </View>
 
             <Text>
