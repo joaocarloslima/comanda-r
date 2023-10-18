@@ -4,6 +4,8 @@ import { ScrollView, Text, TextInput, View } from 'react-native';
 import CardProduto from '../components/card.js';
 import { StyleSheet } from 'react-native';
 import Button from '../components/button.js';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const produto = {
     "id": 1,
@@ -13,6 +15,13 @@ const produto = {
 }
 
 export default function Produtos() {
+  const [produtos, setProdutos] = useState([])
+
+  useEffect(()=>{
+    axios.get("http://localhost:3000/produtos")
+      .then(resp => setProdutos(resp.data))
+  }, [])
+
     return (
         <View style={styles.containerBetween}>
             <View style={styles.header}>
@@ -45,18 +54,10 @@ export default function Produtos() {
             <Text style={styles.subtitle}>Produtos</Text>
 
             <ScrollView style={styles.scroll}>
-                <CardProduto produto={produto} />
-                <CardProduto produto={produto} />
-                <CardProduto produto={produto} />
-                <CardProduto produto={produto} />
-                <CardProduto produto={produto} />
-                <CardProduto produto={produto} />
-                <CardProduto produto={produto} />
-                <CardProduto produto={produto} />
-                <CardProduto produto={produto} />
-                <CardProduto produto={produto} />
-                <CardProduto produto={produto} />
-               
+  
+              { produtos.map(produto => 
+                  <CardProduto key={produto.id} produto={produto} />) }
+
             </ScrollView>
 
             <Button>finalizar</Button>
