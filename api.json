@@ -18,5 +18,20 @@
             "preco": 90,
             "id": 3
         }
+    ],
+    "usuarios": [
+        {
+            "id": 1,
+            "nome": "Joao Carlos",
+            "email": "joao@fiap.com.br",
+            "senha": "1234"
+        },
+        {
+            "id": 2,
+            "nome": "Maria Santos",
+            "email": "maria@fiap.com.br",
+            "senha": "1234"
+        }
     ]
+
 }
